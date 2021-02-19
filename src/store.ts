@@ -4,6 +4,16 @@ import { scan, shareReplay, startWith } from 'rxjs/operators'
 import type { Action } from './types/action'
 import type { Reducer } from './types/reducer'
 
+/**
+ * Creates a store, which responds to actions by updating its state and can be
+ * subscribed to.
+ *
+ * @param reducer - The {@link Reducer}, responsible for processing incoming
+ *   actions and updating the state.
+ * @param initialState - The initial state of the store.
+ * @param action$ - An Observable that represents the sequence of actions sent
+ *   to this store over time.
+ */
 const createStore = <S, P, A extends Action<P>>(
   reducer: Reducer<S, P, A>,
   initialState: S,
